@@ -1,0 +1,3 @@
+[submodule "Task2/simpletest"]
+	path = Task2/simpletest
+	url = https://github.com/kudaba/simpletest.git
