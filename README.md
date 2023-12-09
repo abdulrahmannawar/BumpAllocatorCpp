@@ -292,7 +292,7 @@ Average time taken per run: 700ns
 
 1. During testing, it was observed that initialising the allocator with a size of 4 and then allocating 1 integer caused a segmentation fault in a function of format void function(void). However this is not the case when using l/r-value referencing.
 
-2. In regular use cases of the bump allocator, bumping downwards is almost always efficient. However during some tests the bump_up would take less time to accomplish the task given. This could be because compiler may optimise code differently, and the generated assembly might favor one allocator over the other. The specifics of how the compiler optimizes the code can influence performance of either allocator.
+2. In regular use cases of the bump allocator, bumping downwards is almost always efficient. However during some tests the bump_up would take less time to accomplish the task given. This could be because compiler may optimise code differently, and the generated assembly might favor one allocator over the other. The specifics of how the compiler optimises the code can influence performance of either allocator.
 
 3. Passing void to a function and initialising the bumper object in body is approximately 3-4 times slower than passing by r-value according to multiple runs of this, however bump_down is faster than bump_up in this case.
 
