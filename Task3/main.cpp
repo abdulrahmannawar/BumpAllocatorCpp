@@ -26,7 +26,7 @@ void test(bump::bump_down<1600> &allocator)
 
 int main()
 {
-
+    // Bump up Single Allocations r-value reference
     auto bench_single_allocations_bup = benchmark::run_benchmark(
         "Single Allocations (Bump Up (lambda: pass by r-value reference (&&)))",
         100,
@@ -39,6 +39,7 @@ int main()
     );
     std::cout << "Average time taken per run: " << bench_single_allocations_bup << "ns\n\n";
 
+    // Bump Down Single Allocations r-value reference
     auto bench_single_allocations_bdown = benchmark::run_benchmark(
         "Single Allocations (Bump Down (lambda: pass by r-value reference (&&)))", 
         100, 
@@ -51,6 +52,7 @@ int main()
     );
     std::cout << "Average time taken per run: " << bench_single_allocations_bdown << "ns\n\n";
 
+    // Bump Up Big Allocations l-value reference
     auto bench_big_allocations_bup = benchmark::run_benchmark(
         "Big Allocations (Bump Up (lambda: pass by r-value reference (&&)))", 
         100, 
@@ -65,6 +67,7 @@ int main()
     );
     std::cout << "Average time taken per run: " << bench_big_allocations_bup << "ns\n\n";
 
+    // Bump Down Big Allocations l-value reference
     auto bench_big_allocations_bdown = benchmark::run_benchmark(
         "Big Allocations (Bump Down (lambda: pass by r-value reference (&&)))", 
         100, 
@@ -79,18 +82,22 @@ int main()
     );
     std::cout << "Average time taken per run: " << bench_big_allocations_bdown << "ns\n\n";
 
+    // Bump Uo Mixed Size Allocations void function(void)
     auto bench_mixed_size_allocations_bup = benchmark::run_benchmark("Mixed Size Allocations (Bump Up (void function(void)))", 100, MixedSizeAllocationsBumpUp);
     std::cout << "Average time taken per run: " << bench_mixed_size_allocations_bup << "ns\n\n";
 
+    // Bump DOwn Mixed Size Allocations void function(void)
     auto bench_mixed_size_allocations_bdown = benchmark::run_benchmark("Mixed Size Allocations (Bump Down (void function(void)))", 100, MixedSizeAllocationsBumpDown);
     std::cout << "Average time taken per run: " << bench_mixed_size_allocations_bdown << "ns\n\n";
 
+    // Bump Up Loop Allocations and Deallocation l-value reference
     bump::bump_up<4096> bup_allocator;
     auto bench_loop_allocations_and_deallocation_bup = benchmark::run_benchmark("Loop Allocations and Deallocation (Bump Up (void function(pass by l-value ref (&))))", 1, LoopAllocationAndDeallocationBumpUp, bup_allocator);
     std::cout << "Average time taken per run: " << bench_loop_allocations_and_deallocation_bup << "ns\n\n";
 
+    // Bump Up Loop Allocations and Deallocation r-value reference
     auto bench_rvr_loop_alloc_and_dealloc_bup = benchmark::run_benchmark(
-        "Loop Allocations and Deallocation (Bump Up (lambda: pass by rvr)", 
+        "Loop Allocations and Deallocation (Bump Up (lambda: pass by rvr))", 
         1, 
         [](bump::bump_up<4096> &&allocator)
         {
@@ -103,12 +110,14 @@ int main()
     );
     std::cout << "Average time taken per run: " << bench_rvr_loop_alloc_and_dealloc_bup << "ns\n\n";
 
+    // Bump Down Loop Allocations and Deallocation l-value reference
     bump::bump_down<4096> bdown_allocator;
     auto bench_loop_allocations_and_deallocation_bdown = benchmark::run_benchmark("Loop Allocations and Deallocation (Bump Down (void function(pass by l-value ref (&))))", 1, LoopAllocationAndDeallocationBumpDown, bdown_allocator);
     std::cout << "Average time taken per run: " << bench_loop_allocations_and_deallocation_bdown << "ns\n\n";
 
+    // Bump Down Loop Allocations and Deallocation r-value reference
     auto bench_rvr_loop_alloc_and_dealloc_bdown = benchmark::run_benchmark(
-        "Loop Allocations and Deallocation (Bump Down (lambda: pass by rvr)", 
+        "Loop Allocations and Deallocation (Bump Down (lambda: pass by rvr))", 
         1, 
         [](bump::bump_down<4096> &&allocator)
         {

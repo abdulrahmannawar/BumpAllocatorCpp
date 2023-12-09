@@ -166,7 +166,7 @@ DEFINE_TEST_G(MemoryLeakDetectionTest, Bump)
 {
     {
         bump<10 * sizeof(int)> bumper;
-        std::cout << "Address (before allocation): ";
+        std::cout << "\nAddress (before allocation): ";
         bumper.print_next_addr();
         int *x = bumper.allocate<int>(10);
         std::cout << "Address (after allocation of 10 ints): ";

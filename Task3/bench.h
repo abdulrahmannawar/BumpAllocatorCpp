@@ -42,7 +42,7 @@ namespace benchmark
         // Output benchmark results
         std::cout << "Benching: " << description << std::endl;
         std::cout << "Total runs: " << runs << std::endl;
-        std::cout << "Total time taken: " << total_time << "μs" << std::endl;
+        std::cout << "Total time taken: " << total_time << "ns" << std::endl;
 
         // Calculate and output the average time per run
         double average_time = total_time / static_cast<double>(runs);
