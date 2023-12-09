@@ -105,7 +105,7 @@ The `reinterpret_cast` is used to cast the `aligned_address + bytes_needed` to a
 It can be seen in the output that the allocator allocates memory and that the alignment requirements for allocated memory correctly.
 
 ~~~bash
-Before allocation: Address: 21700272 
+Before allocation:          Address: 21700272 
 After  allocating char:     Address: 21700273   (1 bytes - 7 padding)
 After  allocating double:   Address: 21700288   (8 bytes - 0 padding)
 After  allocating short:    Address: 21700290   (2 bytes - 0 padding)
@@ -134,10 +134,10 @@ The tests included:
 
 ~~~bash
 // NO DEALLOCATION INCLUDED 
-(Scoped Bump) Address (before allocation): Address: 23516576
-(Scoped Bump) Address (after allocation of 10 ints): Address: 23516616
-Address (after destruction): Address: 23516576
-Address (after allocation of 10 ints): Address: 23516616
+(Scoped Bump) Address (before allocation):            Address: 23516576
+(Scoped Bump) Address (after allocation of 10 ints):  Address: 23516616
+Address (after destruction):                          Address: 23516576
+Address (after allocation of 10 ints):                Address: 23516616
 ~~~
 * **A Repeated Allocator Destruction And Creation Test:** Creating and destroying an allocator multiple times using a loop and allocating memory, making sure that there is no memory leak or any other issues.
 
@@ -226,7 +226,6 @@ The `for` loop executes the function `runs` number of times, and measures the ti
 
 The `std::forward` function is used to forward the arguments to the function. This is used to ensure that the arguments are forwarded as either lvalues or rvalues, depending on the type of the argument. This is important as it ensures that the arguments are forwarded correctly, and avoids unnecessary copying of arguments.
 
-<!-- An r-value reference differs from an l-value reference in that it can bind to a temporary object (an r-value), whereas an l-value reference can only bind to an l-value. -->
 The tests included (for bump_up and bump_down allocators):
 * **A Single Allocation Test** Allocating a single integer by using a lambda function and passing the parameter as an r-value reference. *
 * **A Big Allocation Test** Allocating a large amount of memory by using a lambda function and passing the parameter as an r-value reference. *
@@ -323,12 +322,12 @@ On the other hand, when the allocator is passed by r-value reference to lambda, 
 | Total time taken | 10200ns | 8501ns | 10900ns | 9300ns |
 | Average time per run | 102ns | 85.01ns | 109ns | 93ns |
 | | | | | |
-| **Loop Alloc and Dealloc (λ: pass by l-value ref (&))** | | | | |
+| **Loop Alloc and Dealloc (pass by l-value ref (&))** | | | | |
 | Total runs        | 1   | 1   | 1   | 1   |
 | Total time taken   | 700ns  | 700ns  | 800ns  | 800ns  |
 | Average time per run   | 700ns  | 700ns  | 800ns  | 800ns  |
 | | | | | |
-| **Loop Alloc and Dealloc (λ: pass by r-value ref)** | | | | |
+| **Loop Alloc and Dealloc (pass by r-value ref)** | | | | |
 | Total runs | 1 | 1 | 1 | 1 |
 | Total time taken | 600ns | 700ns | 700ns | 700ns |
 | Average time per run | 600ns | 700ns | 700ns | 700ns |
@@ -342,7 +341,7 @@ On the other hand, when the allocator is passed by r-value reference to lambda, 
 | Total time taken   | 2301ns | 1800ns | 2200ns | 2600ns |
 | Average time per run   | 23.01ns     | 18ns   | 22ns   | 26ns   |
 |   | | | | |
-| **Big Allocations (λ: pass by r-value ref)**    | | | | |
+| **Big Allocations (pass by r-value ref)**    | | | | |
 | Total runs   | 100 | 100 | 100 | 100 |
 | Total time taken   | 3000ns | 3100ns | 2400ns | 2300ns |
 | Average time per run   | 30ns   | 31ns   | 24ns   | 23ns   |
@@ -352,14 +351,14 @@ On the other hand, when the allocator is passed by r-value reference to lambda, 
 | Total time taken   | 7500ns | 5000ns | 7100ns | 5501ns |
 | Average time per run   | 75ns   | 50ns   | 71ns   | 55.01ns     |
 |   | | | | |
-| **Loop Alloc and Dealloc (λ: pass by l-value ref (&))** |     | | | |
+| **Loop Alloc and Dealloc (pass by l-value ref (&))** |     | | | |
 | Total runs   | 1   | 1   | 1   | 1   |
 | Total time taken   | 100ns  | 0ns | 300ns  | 0ns |
 | Average time per run   | 100ns  | 0ns | 300ns  | 0ns |
 |   | | | | |
-| **Loop Alloc and Dealloc (λ: pass by r-value ref)** | | | | |
+| **Loop Alloc and Dealloc (pass by r-value ref)** | | | | |
 | Total runs   | 1   | 1   | 1   | 1   |
 | Total time taken   | 0ns | 100ns  | 200ns  | 200ns  |
 | Average time per run   | 0ns | 100ns  | 200ns  | 200ns  |
 
-# [Back To Top](#advanced-systems-programming---worksheet-2)
+# [Back To Top](#contents)
